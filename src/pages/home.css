@@ -1,0 +1,52 @@
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.input {
+  width: 400px;
+  margin-left: 1.5rem;
+}
+
+.input input {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: none;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+input::placeholder {
+  color: white;
+}
+
+.select {
+}
+
+select {
+  height: auto;
+  padding: 0.8rem;
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+  border-radius: 5px;
+}
+
+
+/* corrigir select e options */
+.countries {
+  width: 97%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 1rem;
+  row-gap: 4rem;
+}
