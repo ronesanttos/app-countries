@@ -14,8 +14,6 @@ main {
   width: 400px;
   margin-left: 1.5rem;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .input input {
@@ -33,11 +31,10 @@ input::placeholder {
  
 }
 
-
-
 .busca {
   position: absolute;
   top: 14%;
+  margin: 2rem 1rem;
   width: 30px;
   height: 30px;
 }
