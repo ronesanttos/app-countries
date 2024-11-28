@@ -7,6 +7,8 @@ const Details = () => {
   const [countrie, setCountrie] = useState([]);
   const [value, setValue] = useState("")
 
+  // testar build
+  
   const getCountriesName = async () => {
     try {
       const response = await fetch(
