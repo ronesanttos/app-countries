@@ -8,7 +8,6 @@ import Search from "./pages/Search";
 
 function App() {
   return (
-    <div className="App">
       <BrowserRouter>
         <Header />
         <Routes>
@@ -17,7 +16,6 @@ function App() {
           <Route path="/countrie/search/:names" element={<Search />} />
         </Routes>
       </BrowserRouter>
-    </div>
   );
 }
 
