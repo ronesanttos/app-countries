@@ -9,7 +9,7 @@ const Cards = ({ countries, handleClick }) => {
       <div className="info">
         <button onClick={(e) => handleClick(e.target.value)} value={countries.name.common}>{countries.name.common}</button>
         <p>
-          Population: <span>{countries.population}</span>
+          Population: <span>{Intl.NumberFormat('pt-BR').format(countries.population)}</span>
         </p>
         <p>
           Region: <span>{countries.region}</span>

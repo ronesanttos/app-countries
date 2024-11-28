@@ -6,8 +6,6 @@ const Details = () => {
   const { name } = useParams();
   const [countrie, setCountrie] = useState([]);
   const [value, setValue] = useState("")
-
-  // testar build
   
   const getCountriesName = async () => {
     try {
@@ -42,13 +40,17 @@ const Details = () => {
   }
 
   const country = countrie[0];
+ 
+
   const currencies = country.currencies
     ? Object.values(country.currencies)
         .map((currency) => currency.name)
         .join(", ")
     : "N/A";
   const borders = country.borders || [];
-
+  const firstName = country.name?.nativeName
+  ? Object.values(country.name.nativeName)[0] // Pega o primeiro nome
+  : "N/A";
   return (
     <div className="container-details">
       <div className="box-exit">
@@ -63,15 +65,11 @@ const Details = () => {
           <p>
             Native Name:{" "}
             <span>
-              {country.name?.nativeName
-                ? Object.entries(country.name.nativeName).map(
-                    ([key, value]) => <span key={key}>{value.common} </span>
-                  )
-                : "N/A"}
+            {firstName ? firstName.common : "N/A"}
             </span>
           </p>
           <p>
-            Population: <span>{country.population}</span>
+            Population: <span>{Intl.NumberFormat('pt-BR').format(country.population)}</span>
           </p>
           <p>
             Region: <span>{country.region}</span>

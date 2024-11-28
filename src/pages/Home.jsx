@@ -4,6 +4,25 @@ import Cards from "../components/Cards";
 import "./home.css";
 
 const Home = () => {
+
+  function scrollToTop() { //Voltar ao topo
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", 
+    });
+  }
+  window.onscroll = function () {
+    var button = document.getElementById("backToTop");
+    if (
+      document.body.scrollTop > 200 ||
+      document.documentElement.scrollTop > 200
+    ) {
+      button.classList.add("show");
+    } else {
+      button.classList.remove("show");
+    }
+  };
+
   const [region, setRegion] = useState([
     "Africa",
     "America",
@@ -17,7 +36,7 @@ const Home = () => {
   const [input, setInput] = useState("");
   const [countries, setCountries] = useState([]);
   const [countrieName, setCountrieName] = useState([]);
-
+  const [erro, setError] = useState("");
   const handleSelectedRegion = async (e) => {
     const region = e.target.value;
     await fetch(`https://restcountries.com/v3.1/region/${region}`)
@@ -53,7 +72,11 @@ const Home = () => {
   };
 
   const searchInput = (value) => {
-    navigate(`countrie/search/${value}`);
+    if (!value) {
+      setError("Digite um pais");
+    } else {
+      navigate(`countrie/search/${value}`);
+    }
   };
 
   useEffect(() => {
@@ -62,15 +85,29 @@ const Home = () => {
 
   return (
     <main>
+      <button
+        id="backToTop"
+        className="back-to-top"
+        onClick={() => scrollToTop()}
+      >
+        <img src="/images/seta.png" alt="seta" />
+      </button>
       <div className="search">
+        {erro}
         <div className="input">
+          <div className="busca">
+            <img
+              onClick={() => searchInput(input)}
+              src="/images/lupa.png"
+              alt="lupa"
+            />
+          </div>
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Search for a country..."
           />
-          <button type="" onClick={() => searchInput(input)}> aqui</button>
         </div>
         <div className="select">
           <select

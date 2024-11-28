@@ -13,21 +13,42 @@ main {
 .input {
   width: 400px;
   margin-left: 1.5rem;
+  display: flex;
 }
 
 .input input {
   width: 100%;
-  padding: 0.8rem;
+  padding: 1rem;
   border-radius: 5px;
   border: none;
   background-color: hsl(209, 23%, 22%);
   color: white;
+  text-align: center;
+
 }
 input::placeholder {
   color: white;
+ 
 }
 
-.select {
+
+
+.busca {
+  position: absolute;
+  top: 14%;
+  margin: .2rem 1.5rem;
+  width: 30px;
+  height: 30px;
+}
+
+.busca img {
+  width: 90%;
+  height: 90%;
+}
+
+.busca img:hover {
+  cursor: pointer;
+ border-bottom: 2px solid aqua;
 }
 
 select {
@@ -49,4 +70,29 @@ select {
   margin: 0 auto;
   padding-top: 1rem;
   row-gap: 4rem;
+
+}.back-to-top {
+  position: fixed;
+  background-color: transparent;
+  bottom: 20px;
+  right: 20px;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  display: none ; /* O botão ficará escondido até rolar para baixo */
+}
+
+.show {
+  display: block;
+}
+
+.back-to-top img {
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 50%;
+}
+
+.back-to-top img:hover {
+  background-color: #007bff;
 }

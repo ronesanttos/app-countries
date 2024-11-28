@@ -9,13 +9,14 @@
 
 .imgs {
   width: 100%;
-  height: 48%;
+  min-height: 220px;
 }
 
 .imgs img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: left;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
