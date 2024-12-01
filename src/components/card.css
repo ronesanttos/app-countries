@@ -1,12 +1,31 @@
+/* Container do cartão */
 .container-cards {
   display: flex;
   flex-direction: column;
-  background-color: hsl(209, 23%, 22%);
+  background-color: inherit; /* cor escura padrão */
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 52%, 0.245);
+  text-align: justify;
   width: 360px;
   height: 400px;
   border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+/* Modo claro para o container */
+.container-cards.light {
+  background-color: #f9f9f9; /* fundo claro */
+  color: black; /* Cor do texto */
+  border-color: hsl(0, 0%, 90%);
+}
+
+/* Modo escuro para o container */
+.container-cards.dark {
+  background-color: hsl(209, 23%, 22%); /* fundo escuro */
+  color: white;
+  border-color: hsl(209, 23%, 25%);
+}
+
+/* Imagens dentro do cartão */
 .imgs {
   width: 100%;
   min-height: 220px;
@@ -21,32 +40,43 @@
   border-top-right-radius: 5px;
 }
 
+/* Informações dentro do cartão */
 .info {
   height: 100%;
   padding: 1.3rem;
-  color: white;
+  transition: color 0.3s;
 }
 
+/* Botão dentro da seção de informações */
 .info button {
   padding: 0.3rem 0;
-  background-color: transparent;
+  background-color: inherit;
+  color: inherit;
   border: none;
-  color: white;
   font-weight: bold;
   font-size: 2rem;
-  transition: .5s;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
+/* Efeito de hover no botão */
 .info button:hover {
-    color: hsl(0, 0%, 52%);
-    text-decoration: 2px underline white;
-    transition: .5s;
-    cursor: pointer;
+  color: hsl(0, 0%, 52%);
+  text-decoration: underline 2px white;
+  transition: 0.5s;
+  cursor: pointer;
 }
+
+/* Parágrafo dentro das informações */
 .info p {
   padding: 0.3rem 0;
 }
-
+.container-cards.light .info {
+  color: black; /* cor do texto mais escura no modo claro */
+}
+.container-cards.dark .info {
+  color: white; /* cor do texto mais escura no modo claro */
+}
+/* Span dentro das informações */
 .info span {
-  color: hsl(0, 0%, 52%);
+  color: hsl(0, 0%, 52%); /* cor do texto em span */
 }

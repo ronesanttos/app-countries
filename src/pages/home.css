@@ -21,14 +21,27 @@ main {
   padding: 1rem;
   border-radius: 5px;
   border: none;
+  background-color: inherit;
+  color: inherit;
+  text-align: center;
+  box-shadow: 1px 1px 2px .4px black;
+}
+main.light input {
+  background-color: white;
+  color: hsl(209, 23%, 22%);
+}
+main.dark input {
   background-color: hsl(209, 23%, 22%);
   color: white;
-  text-align: center;
-
 }
 input::placeholder {
+  color: inherit;
+}
+main.light input::placeholder {
+  color: black;
+}
+main.dark input::placeholder {
   color: white;
- 
 }
 
 .busca {
@@ -46,17 +59,25 @@ input::placeholder {
 
 .busca img:hover {
   cursor: pointer;
- border-bottom: 1px solid aqua;
+  border-bottom: 1px solid aqua;
 }
 
 select {
   height: auto;
   padding: 0.8rem;
-  background-color: hsl(209, 23%, 22%);
-  color: white;
+  background-color: inherit;
+  color:inherit;
   border-radius: 5px;
 }
 
+select.light {
+  background-color:white;
+  color: hsl(209, 23%, 22%)
+}
+select.dark {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
 
 /* corrigir select e options */
 .countries {
@@ -68,8 +89,8 @@ select {
   margin: 0 auto;
   padding-top: 1rem;
   row-gap: 1.3rem;
-
-}.back-to-top {
+}
+.back-to-top {
   position: fixed;
   background-color: transparent;
   bottom: 20px;
@@ -79,7 +100,7 @@ select {
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
-  display: none ; /* O botão ficará escondido até rolar para baixo */
+  display: none; /* O botão ficará escondido até rolar para baixo */
 }
 
 .show {
@@ -94,3 +115,4 @@ select {
 .back-to-top img:hover {
   background-color: #007bff;
 }
+

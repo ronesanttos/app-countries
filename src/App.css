@@ -4,3 +4,24 @@ body {
   font-optical-sizing: auto;
  
 }
+/* Estilos gerais */
+.App {
+  text-align: center;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Tema claro */
+.App.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Tema escuro */
+.App.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+
+
