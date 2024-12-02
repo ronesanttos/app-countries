@@ -44,7 +44,7 @@ main.dark input::placeholder {
 .busca {
   position: absolute;
   margin: 0.5rem 2rem;
-  top: 17%;
+  top: 17.5%;
   width: 30px;
   height: 30px;
 }
@@ -62,18 +62,15 @@ main.dark input::placeholder {
 select {
   height: auto;
   padding: 0.8rem;
-  background-color: inherit;
-  color:inherit;
   border-radius: 5px;
+  background-color: initial;
 }
 
 select.light {
-  background-color:white;
-  color: hsl(209, 23%, 22%)
+
 }
 select.dark {
-  background-color: hsl(209, 23%, 22%);
-  color: white;
+ 
 }
 
 /* corrigir select e options */

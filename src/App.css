@@ -24,3 +24,12 @@ body {
 
 
 
+.App.light select {
+  background-color:white;
+  color: hsl(209, 23%, 22%)
+}
+
+.App.dark select {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
