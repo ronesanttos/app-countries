@@ -6,7 +6,6 @@
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Estilo para o modo claro */
@@ -30,7 +29,6 @@
   margin-left: 2em;
   padding: 0.3rem;
   text-align: center;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .box-exit a {
@@ -126,7 +124,7 @@
 .fronteiras {
   position: absolute;
   top: 55%;
-  padding-top: 3rem;
+  padding-top: 4rem;
   width: 600px;
   height: 50px;
   display: flex;
@@ -149,7 +147,6 @@
   padding: 0.3rem;
   text-align: center;
   border: none;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Estilo do botão no modo claro */

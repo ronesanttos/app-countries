@@ -8,7 +8,6 @@ body {
 .App {
   text-align: center;
   padding: 20px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Tema claro */
@@ -19,7 +18,7 @@ body {
 
 /* Tema escuro */
 .App.dark {
-  background-color: #333333;
+  background-color:  hsl(209, 23%, 22%);
   color: #ffffff;
 }
 

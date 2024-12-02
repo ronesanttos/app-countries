@@ -46,8 +46,8 @@ main.dark input::placeholder {
 
 .busca {
   position: absolute;
-  margin: 0.8rem 2rem;
-  top: 14%;
+  margin: 0.5rem 2rem;
+  top: 15%;
   width: 30px;
   height: 30px;
 }
