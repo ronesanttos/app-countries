@@ -12,7 +12,6 @@ main {
 
 .input {
   width: 400px;
-  margin-left: 1.5rem;
   display: flex;
 }
 
@@ -28,17 +27,15 @@ main {
 }
 main.light input {
   background-color: white;
-  color: hsl(209, 23%, 22%);
 }
 main.dark input {
   background-color: hsl(209, 23%, 22%);
-  color: white;
 }
 input::placeholder {
-  color: inherit;
+  color: hsl(0, 0%, 52%);
 }
 main.light input::placeholder {
-  color: black;
+  color: hsl(0, 0%, 52%);
 }
 main.dark input::placeholder {
   color: white;
@@ -47,7 +44,7 @@ main.dark input::placeholder {
 .busca {
   position: absolute;
   margin: 0.5rem 2rem;
-  top: 15%;
+  top: 17%;
   width: 30px;
   height: 30px;
 }
