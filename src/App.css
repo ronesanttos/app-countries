@@ -1,35 +1,88 @@
+
 body {
   background-color: hsl(207, 26%, 17%);
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
- 
+  
 }
 /* Estilos gerais */
 .App {
   text-align: center;
-  padding: 20px;
 }
 
 /* Tema claro */
 .App.light {
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 98%);
   color: #000000;
 }
 
 /* Tema escuro */
 .App.dark {
-  background-color:  hsl(209, 23%, 22%);
+  background-color: hsl(207, 26%, 17%);
   color: #ffffff;
 }
 
-
-
+.App.light header {
+  background-color: hsl(0, 0%, 98%) ;
+  color: black;
+}
+.App.dark header {
+  background-color: hsl(209, 23%, 22%) ;
+  color: white;
+}
 .App.light select {
-  background-color:white;
-  color: hsl(209, 23%, 22%)
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(209, 23%, 22%);
 }
 
 .App.dark select {
   background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+
+.App.light .container-cards {
+  background-color: hsl(0, 0%, 100%); /* fundo claro */
+  color: black; /* Cor do texto */
+  border-color: hsl(0, 0%, 90%);
+}
+
+.App.dark .container-cards {
+  background-color: hsl(209, 23%, 22%); /* fundo escuro */
+  color: white;
+  border-color: hsl(209, 23%, 22%);
+}
+
+.App.light .container-cards .info {
+  color: black; /* cor do texto mais escura no modo claro */
+}
+.App.dark .container-cards .info {
+  color: white; /* cor do texto mais escura no modo claro */
+}
+
+.App.light input {
+  background-color: white;
+  color: hsl(0, 0%, 52%);
+}
+.App.dark input {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+
+.App.light main input::placeholder {
+  color: hsl(0, 0%, 52%);
+}
+.App.dark main input::placeholder {
+  color: white;
+}
+
+/* Estilo para o modo claro */
+.App.light .container-details {
+  background-color: #f9f9f9;
+  color: black;
+}
+
+/* Estilo para o modo escuro */
+.App.dark .container-details {
+  background-color:hsl(207, 26%, 17%);
   color: white;
 }

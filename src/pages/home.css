@@ -25,20 +25,9 @@ main {
   text-align: center;
   box-shadow: 1px 1px 2px .4px black;
 }
-main.light input {
-  background-color: white;
-}
-main.dark input {
-  background-color: hsl(209, 23%, 22%);
-}
+
 input::placeholder {
   color: hsl(0, 0%, 52%);
-}
-main.light input::placeholder {
-  color: hsl(0, 0%, 52%);
-}
-main.dark input::placeholder {
-  color: white;
 }
 
 .busca {
@@ -63,14 +52,6 @@ select {
   height: auto;
   padding: 0.8rem;
   border-radius: 5px;
-  background-color: initial;
-}
-
-select.light {
-
-}
-select.dark {
- 
 }
 
 /* corrigir select e options */

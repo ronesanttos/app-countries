@@ -2,27 +2,14 @@
 .container-cards {
   display: flex;
   flex-direction: column;
-  background-color: inherit; /* cor escura padrão */
-  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 52%, 0.245);
+  box-shadow: .1px .1px 2px .1px hsl(209, 23%, 22%);
   text-align: justify;
   width: 360px;
   height: 400px;
   border-radius: 5px;
 }
 
-/* Modo claro para o container */
-.container-cards.light {
-  background-color: #f9f9f9; /* fundo claro */
-  color: black; /* Cor do texto */
-  border-color: hsl(0, 0%, 90%);
-}
 
-/* Modo escuro para o container */
-.container-cards.dark {
-  background-color: hsl(209, 23%, 22%); /* fundo escuro */
-  color: white;
-  border-color: hsl(209, 23%, 25%);
-}
 
 /* Imagens dentro do cartão */
 .imgs {
@@ -34,9 +21,9 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-bottom: 1px solid hsla(0, 0%, 52%, 0.092);
 }
 
 /* Informações dentro do cartão */
@@ -66,12 +53,7 @@
 .info p {
   padding: 0.3rem 0;
 }
-.container-cards.light .info {
-  color: black; /* cor do texto mais escura no modo claro */
-}
-.container-cards.dark .info {
-  color: white; /* cor do texto mais escura no modo claro */
-}
+
 /* Span dentro das informações */
 .info span {
   color: hsl(0, 0%, 52%); /* cor do texto em span */

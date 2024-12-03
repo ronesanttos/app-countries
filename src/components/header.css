@@ -7,22 +7,10 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.129);
 }
 
-header.dark {
-  background-color: hsl(209, 23%, 22%);
-  color: white;
-}
-header.light {
-  background-color: white;
-  color: hsl(209, 23%, 22%);
-}
-
 header h1 {
   padding-left: 2rem;
 }
 
-header span {
-  padding-right: 2rem;
-}
 
 header button {
   background-color: inherit;

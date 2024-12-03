@@ -8,17 +8,6 @@
   flex-direction: column;
 }
 
-/* Estilo para o modo claro */
-.container-details.light {
-  background-color: #f9f9f9;
-  color: black;
-}
-
-/* Estilo para o modo escuro */
-.container-details.dark {
-  background-color: hsl(209, 23%, 22%);
-  color: white;
-}
 
 /* Caixa de saída */
 .box-exit {
