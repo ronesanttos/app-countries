@@ -6,6 +6,7 @@
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
+  
 }
 
 
@@ -68,6 +69,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border: 1px solid hsla(0, 0%, 52%, 0.092)
 }
 
 /* Informações nos detalhes */
