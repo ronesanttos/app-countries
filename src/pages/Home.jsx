@@ -4,11 +4,11 @@ import Cards from "../components/Cards";
 import "./home.css";
 
 const Home = () => {
-
-  function scrollToTop() { //Voltar ao topo
+  function scrollToTop() {
+    //Voltar ao topo
     window.scrollTo({
       top: 0,
-      behavior: "smooth", 
+      behavior: "smooth",
     });
   }
   window.onscroll = function () {
@@ -95,13 +95,11 @@ const Home = () => {
       <div className="search">
         {erro}
         <div className="input">
-          <div className="busca">
-            <img
-              onClick={() => searchInput(input)}
-              src="/images/lupa.png"
-              alt="lupa"
-            />
-          </div>
+          <img
+            onClick={() => searchInput(input)}
+            src="/images/lupa.png"
+            alt="lupa"
+          />
           <input
             type="text"
             value={input}

@@ -29,25 +29,6 @@
   font-weight: 600;
 }
 
-/* Estilos para o modo claro */
-.container-details.light .box-exit a {
-  background-color: #f9f9f9;
-  color: black;
-}
-
-/* Estilos para o modo escuro */
-.container-details.dark .box-exit a {
-  background-color: hsl(209, 23%, 22%);
-  color: white;
-}
-
-/* Efeito de hover */
-.box-exit:hover,
-.fronteiras button:hover {
-  color: inherit;
-  box-shadow: 1px 1px 2px 1px inset;
-  cursor: pointer;
-}
 
 /* Container para as imagens e informações */
 .box-info {
@@ -130,22 +111,11 @@
 /* Botões dentro da seção fronteiras */
 .fronteiras button {
   width: 50px;
-  height: 20px;
-  background-color: transparent;
   box-shadow: 1px 1px 3px 1px hsl(200, 15%, 14%);
   color: hsl(0, 0%, 52%);
   border-radius: 2px;
-  padding: 0.3rem;
+  padding: .3rem;
   text-align: center;
   border: none;
 }
 
-/* Estilo do botão no modo claro */
-.container-details.light .fronteiras button {
-  color: inherit;
-}
-
-/* Estilo do botão no modo escuro */
-.container-details.dark .fronteiras button {
-  color: inherit;
-}

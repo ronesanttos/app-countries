@@ -11,9 +11,7 @@ header h1 {
   padding-left: 2rem;
 }
 
-
 header button {
-  background-color: inherit;
   color: inherit;
   box-shadow: 1px 1px 2px 1px hsla(0, 0%, 52%, 0.245);
   padding: 10px 10px;
@@ -21,9 +19,4 @@ header button {
   cursor: pointer;
   border: none;
   border-radius: 5px;
-}
-
-header button:hover {
-  background-color: rgb(181, 188, 191);
-  color: hsl(209, 23%, 22%);
 }

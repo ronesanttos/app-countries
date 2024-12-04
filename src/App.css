@@ -1,9 +1,7 @@
-
 body {
   background-color: hsl(207, 26%, 17%);
   font-family: "Nunito Sans", sans-serif;
   font-optical-sizing: auto;
-  
 }
 /* Estilos gerais */
 .App {
@@ -23,13 +21,14 @@ body {
 }
 
 .App.light header {
-  background-color: hsl(0, 0%, 98%) ;
+  background-color: hsl(0, 0%, 98%);
   color: black;
 }
 .App.dark header {
-  background-color: hsl(209, 23%, 22%) ;
+  background-color: hsl(209, 23%, 22%);
   color: white;
 }
+
 .App.light select {
   background-color: hsl(0, 0%, 100%);
   color: hsl(209, 23%, 22%);
@@ -76,13 +75,41 @@ body {
 }
 
 /* Estilo para o modo claro */
-.App.light .container-details {
+.App.light .container-details,
+.App.light header button {
   background-color: #f9f9f9;
   color: black;
 }
 
 /* Estilo para o modo escuro */
-.App.dark .container-details {
-  background-color:hsl(207, 26%, 17%);
+.App.dark .container-details,
+.App.dark header button {
+  background-color: hsl(207, 26%, 17%);
   color: white;
+}
+
+.App.light .container-details .box-exit, .App.light .fronteiras button {
+  background-color: #f9f9f9;
+  color: black;
+}
+
+.App.dark .container-details .box-exit, .App.App.dark .fronteiras button  {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+
+.App.light .box-exit:hover,
+.App.light .fronteiras button:hover,
+.App.light header button:hover {
+  color: inherit;
+  box-shadow: 1px 1px 8px 2px  hsl(209, 23%, 22%);
+  cursor: pointer;
+}
+
+.App.dark .box-exit:hover,
+.App.dark .fronteiras button:hover,
+.App.dark header button:hover {
+  color: inherit;
+  box-shadow: 1px 1px 8px  2px white;
+  cursor: pointer;
 }
