@@ -57,14 +57,14 @@ const Home = () => {
 
   const handleClick = (value) => {
     setCountrieName(value);
-    navigate(`countrie/${value}`);
+    window.open(`countrie/${value}`, "_blank");
   };
 
   const searchInput = (value) => {
     if (!value) {
       setError(true);
     } else {
-      navigate(`countrie/search/${value}`);
+      window.open(`countrie/search/${value}`, "_blank");
     }
   };
 
@@ -77,6 +77,9 @@ const Home = () => {
     }
   }, [error]);
 
+  if(!countries) {
+    return <p>Loading</p>
+  }
   return (
     <main>
       <button
