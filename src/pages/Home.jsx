@@ -57,14 +57,16 @@ const Home = () => {
 
   const handleClick = (value) => {
     setCountrieName(value);
-    window.open(`countrie/${value}`, "_blank");
+    navigate(`countrie/${value}`);
+    window.open( `https://app-countries-lime.vercel.app/countrie/${value}`, "_blank")
   };
 
   const searchInput = (value) => {
     if (!value) {
       setError(true);
     } else {
-      window.open(`countrie/search/${value}`, "_blank");
+      navigate(`countrie/search/${value}`);
+      window.open( `https://app-countries-lime.vercel.app/countrie/${value}`, "_blank")
     }
   };
 
@@ -77,9 +79,6 @@ const Home = () => {
     }
   }, [error]);
 
-  if(!countries) {
-    return <p>Loading</p>
-  }
   return (
     <main>
       <button
