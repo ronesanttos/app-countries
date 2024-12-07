@@ -26,7 +26,7 @@ const Search = () => {
 
 
   if (!countrie[0]) {
-    return <p>Carregando...</p>; // Show a loading message while data is being fetched
+    return <p>Loading...</p>; // Show a loading message while data is being fetched
   }
 
   const country = countrie[0];
