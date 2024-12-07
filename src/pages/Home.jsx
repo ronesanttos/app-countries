@@ -76,7 +76,9 @@ const Home = () => {
       return () => clearTimeout();
     }
   }, [error]);
-
+  useEffect(() => {
+    handleSelectedRegion();
+  }, [region]);
   return (
     <main>
       <button

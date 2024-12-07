@@ -42,7 +42,7 @@ export const ThemeProvider = ({ children }) => {
 
   useEffect(() => {
     getAllCountries();
-  }, [countries]); // teste com o countries
+  }, []); // teste com o countries
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleTheme,countries, setCountries, getAllCountries }}>
