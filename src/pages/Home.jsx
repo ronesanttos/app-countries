@@ -58,7 +58,6 @@ const Home = () => {
   const handleClick = (value) => {
     setCountrieName(value);
     navigate(`countrie/${value}`);
-  
   };
 
   const searchInput = (value) => {
@@ -66,7 +65,6 @@ const Home = () => {
       setError(true);
     } else {
       navigate(`countrie/search/${value}`);
-     
     }
   };
 
