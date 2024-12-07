@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cards from "../components/Cards";
 import "./home.css";
+import { useTheme } from "../context/ThemeContext";
+import Message from "../components/Message";
 
 const Home = () => {
   function scrollToTop() {
@@ -34,9 +36,10 @@ const Home = () => {
 
   const [regionSelected, setRegionSelected] = useState("");
   const [input, setInput] = useState("");
-  const [countries, setCountries] = useState([]);
+  const [error, setError] = useState(false);
+  const { countries, setCountries } = useTheme();
   const [countrieName, setCountrieName] = useState([]);
-  const [erro, setError] = useState("");
+
   const handleSelectedRegion = async (e) => {
     const region = e.target.value;
     await fetch(`https://restcountries.com/v3.1/region/${region}`)
@@ -57,31 +60,22 @@ const Home = () => {
     navigate(`countrie/${value}`);
   };
 
-  const getAllCountries = async () => {
-    await fetch(" https://restcountries.com/v3.1/all")
-      .then((resp) => resp.json())
-      .then((data) => {
-        const sortedCountries = data.sort((a, b) => {
-          if (a.population < b.population) return 1;
-          if (a.population > b.population) return -1;
-          return 0;
-        });
-        setCountries(sortedCountries);
-      })
-      .catch((error) => console.error(error));
-  };
-
   const searchInput = (value) => {
     if (!value) {
-      setError("Digite um pais");
+      setError(true);
     } else {
       navigate(`countrie/search/${value}`);
     }
   };
 
   useEffect(() => {
-    getAllCountries();
-  }, []);
+    if (error) {
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
+      return () => clearTimeout();
+    }
+  }, [error]);
 
   return (
     <main>
@@ -93,7 +87,6 @@ const Home = () => {
         <img src="/images/seta.png" alt="seta" />
       </button>
       <div className="search">
-        {erro}
         <div className="input">
           <img
             onClick={() => searchInput(input)}
@@ -123,6 +116,11 @@ const Home = () => {
           </select>
         </div>
       </div>
+
+      <div className={`${!error ? "msgHide" : "msg"}`}>
+        {error && <Message msg={"search for a country name! "} />}
+      </div>
+
       <div className="countries">
         {countries.map((countrie, index) => (
           <Cards key={index} countries={countrie} handleClick={handleClick} />

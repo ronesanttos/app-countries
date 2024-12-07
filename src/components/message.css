@@ -1,0 +1,22 @@
+.msgHide {
+    background-color: red;
+    width: 30%;
+    padding: .8rem;
+    border-radius: 5px;
+    display: none;
+    justify-content: center;
+    margin: 0 auto;
+}
+.msg {
+    background-color: red;
+    width: 30%;
+    padding: .8rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.msg p {
+    font-weight: bold;
+}

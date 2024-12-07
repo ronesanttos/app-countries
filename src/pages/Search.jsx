@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./details.css";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const { names } = useParams();
   const [countrie, setCountrie] = useState([]);
+  const navigate = useNavigate();
 
   const getCountriesName = async () => {
     try {
       const response = await fetch(
-      `https://restcountries.com/v3.1/translation/${names}`
+        `https://restcountries.com/v3.1/translation/${names}`
       );
       const data = await response.json();
       setCountrie(data);
@@ -22,8 +24,9 @@ const Search = () => {
     getCountriesName();
   }, [names]); // Re-fetch data when the 'name' changes
 
+
   if (!countrie[0]) {
-    return <p>Loading...</p>; // Show a loading message while data is being fetched
+    return <p>Carregando...</p>; // Show a loading message while data is being fetched
   }
 
   const country = countrie[0];
@@ -33,6 +36,7 @@ const Search = () => {
         .join(", ")
     : "N/A";
   const borders = country.borders || [];
+  console.log(country)
 
   return (
     <div className="container-details">

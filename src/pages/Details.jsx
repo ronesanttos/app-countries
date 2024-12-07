@@ -36,7 +36,7 @@ const Details = () => {
   }, [name,value]); // Re-fetch data when the 'name' changes
 
   if (!countrie[0]) {
-    return <p>Loading...</p>; // Show a loading message while data is being fetched
+    return <p>Carregando...</p>; // Show a loading message while data is being fetched
   }
 
   const country = countrie[0];
@@ -51,6 +51,7 @@ const Details = () => {
   const firstName = country.name?.nativeName
   ? Object.values(country.name.nativeName)[0] // Pega o primeiro nome
   : "N/A";
+
   return (
     <div className="container-details">
       <div className="box-exit">
