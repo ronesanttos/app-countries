@@ -87,3 +87,14 @@ select {
 .back-to-top img:hover {
   background-color: #007bff;
 }
+
+@media screen and (max-width: 480px){ 
+  .search {
+    flex-direction: column;
+    align-items: start;
+  }
+  .input {
+    width: 80%;
+    padding-bottom: 2rem;
+  }
+}
