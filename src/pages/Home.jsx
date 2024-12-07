@@ -58,7 +58,7 @@ const Home = () => {
   const handleClick = (value) => {
     setCountrieName(value);
     navigate(`countrie/${value}`);
-    window.open( `https://app-countries-lime.vercel.app/countrie/${value}`, "_blank")
+  
   };
 
   const searchInput = (value) => {
@@ -66,7 +66,7 @@ const Home = () => {
       setError(true);
     } else {
       navigate(`countrie/search/${value}`);
-      window.open( `https://app-countries-lime.vercel.app/countrie/${value}`, "_blank")
+     
     }
   };
 
