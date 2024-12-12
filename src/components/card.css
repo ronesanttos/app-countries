@@ -33,7 +33,7 @@
 }
 
 /* Botão dentro da seção de informações */
-.info button {
+.info a {
   padding: 0.3rem 0;
   background-color: inherit;
   color: inherit;
@@ -43,7 +43,7 @@
 }
 
 /* Efeito de hover no botão */
-.info button:hover {
+.info a:hover {
   color: hsl(0, 0%, 52%);
   text-decoration: underline 2px white;
   cursor: pointer;

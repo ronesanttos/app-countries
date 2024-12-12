@@ -1,42 +1,54 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./details.css";
-import { useNavigate } from "react-router-dom";
 
-const Search = () => {
-  const { names } = useParams();
+const Details = () => {
+  const { name } = useParams();
   const [countrie, setCountrie] = useState([]);
-  const navigate = useNavigate();
+  const [value, setValue] = useState("")
+  console.log(countrie[0])
+  useEffect(() => {
 
-  const getCountriesName = async () => {
+    const getCountriesName = async (name) => {
+      const response = await fetch(
+        `https://restcountries.com/v3.1/name/${name}?fullText=true`
+      );
+      const data = await response.json();
+      setCountrie(data);
+
+    };
+    getCountriesName(name)
+  }, [])
+
+  const handleCountrieClick = async (value) => {
     try {
       const response = await fetch(
-        `https://restcountries.com/v3.1/translation/${names}`
+        `https://restcountries.com/v3.1/alpha/${value}`
       );
       const data = await response.json();
       setCountrie(data);
     } catch (error) {
       console.error(error);
     }
-  };
-
-  useEffect(() => {
-    getCountriesName();
-  }, [names]); // Re-fetch data when the 'name' changes
+  }
 
 
   if (!countrie[0]) {
-    return <p>Loading...</p>; // Show a loading message while data is being fetched
+    return <p>Carregando...</p>; // Show a loading message while data is being fetched
   }
 
   const country = countrie[0];
+
+
   const currencies = country.currencies
     ? Object.values(country.currencies)
-        .map((currency) => currency.name)
-        .join(", ")
+      .map((currency) => currency.name)
+      .join(", ")
     : "N/A";
   const borders = country.borders || [];
-  console.log(country)
+  const firstName = country.name?.nativeName
+    ? Object.values(country.name.nativeName)[0] // Pega o primeiro nome
+    : "N/A";
 
   return (
     <div className="container-details">
@@ -52,15 +64,11 @@ const Search = () => {
           <p>
             Native Name:{" "}
             <span>
-              {country.name?.nativeName
-                ? Object.entries(country.name.nativeName).map(
-                    ([key, value]) => <span key={key}>{value.common} </span>
-                  )
-                : "N/A"}
+              {firstName ? firstName.common : "N/A"}
             </span>
           </p>
           <p>
-            Population: <span>{country.population}</span>
+            Population: <span>{Intl.NumberFormat('pt-BR').format(country.population)}</span>
           </p>
           <p>
             Region: <span>{country.region}</span>
@@ -75,7 +83,7 @@ const Search = () => {
             <h3>Border Countries:</h3>
             {borders.length > 0 ? (
               borders.map((border, index) => (
-                <button key={index}>{border}</button> // Assuming you want to display the country codes
+                <button value={value} onClick={() => handleCountrieClick(border)} key={index}>{border}</button> // Assuming you want to display the country codes
               ))
             ) : (
               <p>No border countries</p>
@@ -92,13 +100,13 @@ const Search = () => {
               Languages:
               {country.languages
                 ? Object.values(country.languages).map((lang, index) => (
-                    <span key={index}>
-                      {lang}
-                      {index < Object.values(country.languages).length - 1
-                        ? ", "
-                        : ""}
-                    </span>
-                  ))
+                  <span key={index}>
+                    {lang}
+                    {index < Object.values(country.languages).length - 1
+                      ? ", "
+                      : ""}
+                  </span>
+                ))
                 : "N/A"}
             </p>
           </div>
@@ -108,4 +116,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Details;

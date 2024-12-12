@@ -1,21 +1,23 @@
+import { Link } from "react-router-dom";
 import "./card.css";
 
-const Cards = ({ countries, handleClick }) => {
+const Cards = ({ flags, name, population, region, capital, handleClick }) => {
   return (
     <div className="container-cards">
       <div className="imgs">
-        <img src={countries.flags.png} alt={countries.name?.common} />
+        <img src={flags?.png} alt={name?.common} />
       </div>
       <div className="info">
-        <button onClick={(e) => handleClick(e.target.value)} value={countries.name.common}>{countries.name.common}</button>
+        <a href={`/countries/${name?.common}`} >{name?.common}</a>
         <p>
-          Population: <span>{Intl.NumberFormat('pt-BR').format(countries.population)}</span>
+          Population:{" "}
+          <span>{Intl.NumberFormat("pt-BR").format(population)}</span>
         </p>
         <p>
-          Region: <span>{countries.region}</span>
+          Region: <span>{region}</span>
         </p>
         <p>
-          Capital: <span>{countries.capital}</span>
+          Capital: <span>{capital}</span>
         </p>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Cards from "../components/Cards";
 import "./home.css";
 import { useTheme } from "../context/ThemeContext";
 import Message from "../components/Message";
+import Search from "../components/Search";
 
 const Home = () => {
   function scrollToTop() {
@@ -35,50 +36,34 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [regionSelected, setRegionSelected] = useState("");
-  const [input, setInput] = useState("");
-  const [error, setError] = useState(false);
-  const { countries, setCountries } = useTheme();
-  const [countrieName, setCountrieName] = useState([]);
-
+  const { countries, setCountries, error, setError, isLoading,setIsLoading } = useTheme();
+  
   const handleSelectedRegion = async (e) => {
     const region = e.target.value;
-    await fetch(`https://restcountries.com/v3.1/region/${region}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        const sortedCountries = data.sort((a, b) => {
-          if (a.population < b.population) return 1;
-          if (a.population > b.population) return -1;
-          return 0;
-        });
-        setCountries(sortedCountries);
-      })
-      .catch((error) => console.error(error));
+    const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
+    const data = await res.json();
+
+    if (res.status === 404) {
+      setError(true);
+      return;
+    }
+    const sortedCountries = data.sort((a, b) => {
+      if (a.population < b.population) return 1;
+      if (a.population > b.population) return -1;
+      return 0;
+    });
+    setCountries(sortedCountries);
   };
 
-  const handleClick = (value) => {
-    setCountrieName(value);
-    navigate(`countrie/${value}`);
-  };
-
-  const searchInput = (value) => {
-    if (!value) {
+  const search = (countrie) => {
+    if (!countrie) {
       setError(true);
     } else {
-      navigate(`countrie/search/${value}`);
+      setIsLoading(false)
+      navigate(`countries/${countrie}`);
     }
   };
 
-  useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        setError(false);
-      }, 2000);
-      return () => clearTimeout();
-    }
-  }, [error]);
-  useEffect(() => {
-    handleSelectedRegion();
-  }, [region]);
   return (
     <main>
       <button
@@ -90,17 +75,7 @@ const Home = () => {
       </button>
       <div className="search">
         <div className="input">
-          <img
-            onClick={() => searchInput(input)}
-            src="/images/lupa.png"
-            alt="lupa"
-          />
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Search for a country..."
-          />
+          <Search loadCountrie={search} />
         </div>
         <div className="select">
           <select
@@ -118,16 +93,14 @@ const Home = () => {
           </select>
         </div>
       </div>
-
-      <div className={`${!error ? "msgHide" : "msg"}`}>
-        {error && <Message msg={"search for a country name! "} />}
-      </div>
-
-      <div className="countries">
-        {countries.map((countrie, index) => (
-          <Cards key={index} countries={countrie} handleClick={handleClick} />
-        ))}
-      </div>
+      {error && <Message msg={"Error."} />}
+      {countries && (
+        <div className="countries">
+          {countries.map((countrie, index) => (
+            <Cards key={index} {...countrie} />
+          ))}
+        </div>
+      )}
     </main>
   );
 };

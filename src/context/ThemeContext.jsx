@@ -7,6 +7,8 @@ const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [countries, setCountries] = useState([]);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Verificar se o tema está salvo no localStorage ao carregar o app
   useEffect(() => {
@@ -27,17 +29,24 @@ export const ThemeProvider = ({ children }) => {
   }, [isDarkMode]);
 
   const getAllCountries = async () => {
-    await fetch(" https://restcountries.com/v3.1/all")
-      .then((resp) => resp.json())
-      .then((data) => {
-        const sortedCountries = data.sort((a, b) => {
-          if (a.population < b.population) return 1;
-          if (a.population > b.population) return -1;
-          return 0;
-        });
-        setCountries(sortedCountries);
-      })
-      .catch((error) => console.error(error));
+    setIsLoading(true)
+    setError(false)
+    setCountries([])
+
+    const res = await fetch(" https://restcountries.com/v3.1/all");
+    const data = await res.json();
+    setIsLoading(false)
+
+    if (res.status === 404) {
+      setError(true);
+      return;
+    }
+    const sortedCountries = data.sort((a, b) => {
+      if (a.population < b.population) return 1;
+      if (a.population > b.population) return -1;
+      return 0;
+    });
+    setCountries(sortedCountries);
   };
 
   useEffect(() => {
@@ -45,7 +54,18 @@ export const ThemeProvider = ({ children }) => {
   }, []); // teste com o countries
 
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme,countries, setCountries, getAllCountries }}>
+    <ThemeContext.Provider
+      value={{
+        isDarkMode,
+        toggleTheme,
+        countries,
+        setCountries,
+        getAllCountries,
+        error,
+        setError,
+        isLoading, setIsLoading
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

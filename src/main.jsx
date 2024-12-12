@@ -4,9 +4,8 @@ import "./index.css";
 import App from "./App.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Details from "./pages/Details.jsx";
-import Search from "./pages/Search.jsx";
+import Home from "./routes/Home.jsx";
+import Details from "./routes/Details.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 const router = createBrowserRouter([
   {
@@ -18,14 +17,9 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/countrie/:name",
+        path: "/countries/:name",
         element: <Details />,
       },
-      {
-        path: "/countrie/search/:names",
-        element: <Search />,
-      },
-     
     ],
   },
 ]);
