@@ -83,7 +83,7 @@ const Details = () => {
             <h3>Border Countries:</h3>
             {borders.length > 0 ? (
               borders.map((border, index) => (
-                <button value={value} onClick={() => handleCountrieClick(border)} key={index}>{border}</button> // Assuming you want to display the country codes
+                <button value={value} onClick={() => handleCountrieClick(border)} key={index}>{border}</button> 
               ))
             ) : (
               <p>No border countries</p>

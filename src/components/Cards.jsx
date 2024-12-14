@@ -8,7 +8,7 @@ const Cards = ({ flags, name, population, region, capital, handleClick }) => {
         <img src={flags?.png} alt={name?.common} />
       </div>
       <div className="info">
-        <a href={`/countries/${name?.common}`} >{name?.common}</a>
+        <a href={`/${name?.common}`} >{name?.common}</a>
         <p>
           Population:{" "}
           <span>{Intl.NumberFormat("pt-BR").format(population)}</span>

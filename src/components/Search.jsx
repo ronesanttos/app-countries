@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const SearchT = ({ loadCountrie }) => {
   const [countrie, setCountrie] = useState("");
-  console.log(countrie)
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
