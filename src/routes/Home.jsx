@@ -36,8 +36,8 @@ const Home = () => {
   const navigate = useNavigate();
 
   const [regionSelected, setRegionSelected] = useState("");
-  const { countries, setCountries, error, setError, isLoading,setIsLoading } = useTheme();
-  
+  const { countries, setCountries, error, setError, isLoading, setIsLoading } = useTheme();
+
   const handleSelectedRegion = async (e) => {
     const region = e.target.value;
     const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
