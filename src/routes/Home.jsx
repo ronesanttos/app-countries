@@ -60,7 +60,7 @@ const Home = () => {
       setError(true);
     } else {
       setIsLoading(false)
-      navigate(`countries/${countrie}`);
+      navigate(`/${countrie}`);
     }
   };
 
