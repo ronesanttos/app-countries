@@ -10,14 +10,23 @@ const Details = () => {
   useEffect(() => {
 
     const getCountriesName = async (name) => {
-      const response = await fetch(
-        `https://restcountries.com/v3.1/name/${name}`
-      );
-      const data = await response.json();
-      setCountrie(data);
-
-    };
+      if (name === "china" || name === "China") {
+        const response = await fetch(
+          ` https://restcountries.com/v3.1/name/${name}?fullText=true`
+        );
+        const data = await response.json();
+        setCountrie(data);
+      }
+      else {
+        const response = await fetch(
+          ` https://restcountries.com/v3.1/translation/${name}`
+        );
+        const data = await response.json();
+        setCountrie(data);
+      };
+    }
     getCountriesName(name)
+    console.log(name)
   }, [])
 
   const handleCountrieClick = async (value) => {
@@ -34,7 +43,7 @@ const Details = () => {
 
   useEffect(() => {
     setValue(name)
-  },[name])
+  }, [name])
 
   if (!countrie[0]) {
     return <p>Carregando...</p>; // Show a loading message while data is being fetched
@@ -86,7 +95,7 @@ const Details = () => {
             <h3>Border Countries:</h3>
             {borders.length > 0 ? (
               borders.map((border, index) => (
-                <button value={value} onClick={() => handleCountrieClick(border)} key={index}>{border}</button> 
+                <button value={value} onClick={() => handleCountrieClick(border)} key={index}>{border}</button>
               ))
             ) : (
               <p>No border countries</p>
