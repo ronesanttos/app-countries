@@ -56,6 +56,7 @@ const Home = () => {
   };
 
   const search = (countrie) => {
+
     if (!countrie) {
       setError(true);
     } else {
@@ -106,7 +107,7 @@ const Home = () => {
       {countries && (
         <div className="countries">
           {countries.map((countrie, index) => (
-            <Cards key={index} {...countrie} handleClick={handleClick}/>
+            <Cards key={index} {...countrie} handleClick={handleClick} />
           ))}
         </div>
       )}

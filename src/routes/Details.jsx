@@ -11,7 +11,7 @@ const Details = () => {
 
     const getCountriesName = async (name) => {
       const response = await fetch(
-        `https://restcountries.com/v3.1/name/${name}?fullText=true`
+        `https://restcountries.com/v3.1/name/${name}`
       );
       const data = await response.json();
       setCountrie(data);
@@ -32,6 +32,9 @@ const Details = () => {
     }
   }
 
+  useEffect(() => {
+    setValue(name)
+  },[name])
 
   if (!countrie[0]) {
     return <p>Carregando...</p>; // Show a loading message while data is being fetched
