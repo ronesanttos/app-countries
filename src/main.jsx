@@ -20,6 +20,7 @@ const router = createBrowserRouter([
         path: "/:name",
         element: <Details />,
       },
+     
     ],
   },
 ]);

@@ -1,55 +1,47 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./details.css";
 
 const Details = () => {
   const { name } = useParams();
-  const [countrie, setCountrie] = useState([]);
+  const [country, setCountry]= useState(null);
   const [value, setValue] = useState("")
-  console.log(countrie[0])
-  useEffect(() => {
 
-    const getCountriesName = async (name) => {
-      if (name === "china" || name === "China") {
-        const response = await fetch(
-          ` https://restcountries.com/v3.1/name/${name}?fullText=true`
-        );
-        const data = await response.json();
-        setCountrie(data);
-      }
-      else {
-        const response = await fetch(
-          ` https://restcountries.com/v3.1/translation/${name}`
-        );
-        const data = await response.json();
-        setCountrie(data);
-      };
-    }
-    getCountriesName(name)
-    console.log(name)
-  }, [])
+  const navigate = useNavigate()
 
-  const handleCountrieClick = async (value) => {
-    try {
+  const getCountriesName = async (name) => {
+    if (name === "china" || name === "China") {
       const response = await fetch(
-        `https://restcountries.com/v3.1/alpha/${value}`
+        ` https://restcountries.com/v3.1/name/${name}?fullText=true`
       );
       const data = await response.json();
-      setCountrie(data);
-    } catch (error) {
-      console.error(error);
+      setCountry(data[0]);
     }
+    else {
+      const response = await fetch(
+        ` https://restcountries.com/v3.1/translation/${name}`
+      );
+      const data = await response.json();
+      setCountry(data[0]);
+    };
+  }
+
+  const handleCountrieClick = async (value) => {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${value}`
+    );
+    const data = await response.json();
+    setCountry(data[0]);
+    navigate(`/${data[0].name.common}`)
   }
 
   useEffect(() => {
-    setValue(name)
+    getCountriesName(name)
   }, [name])
 
-  if (!countrie[0]) {
+  if (!country) {
     return <p>Carregando...</p>; // Show a loading message while data is being fetched
   }
-
-  const country = countrie[0];
 
 
   const currencies = country.currencies

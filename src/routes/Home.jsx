@@ -7,24 +7,14 @@ import Message from "../components/Message";
 import Search from "../components/Search";
 
 const Home = () => {
+
+  //Voltar ao topo
   function scrollToTop() {
-    //Voltar ao topo
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   }
-  window.onscroll = function () {
-    var button = document.getElementById("backToTop");
-    if (
-      document.body.scrollTop > 200 ||
-      document.documentElement.scrollTop > 200
-    ) {
-      button.classList.add("show");
-    } else {
-      button.classList.remove("show");
-    }
-  };
 
   const [region, setRegion] = useState([
     "Africa",
@@ -33,13 +23,35 @@ const Home = () => {
     "Europe",
     "Oceania",
   ]);
-  const navigate = useNavigate();
-
   const [regionSelected, setRegionSelected] = useState("");
+  const navigate = useNavigate();
   const { countries, setCountries, error, setError, isLoading, setIsLoading } = useTheme();
+
+  // Detecta quando o usuário rola e exibe o botão de voltar ao topo
+  useEffect(() => {
+    const handleScroll = () => {
+      const button = document.getElementById("backToTop");
+      if (
+        document.body.scrollTop > 200 ||
+        document.documentElement.scrollTop > 200
+      ) {
+        button.classList.add("show");
+      } else {
+        button.classList.remove("show");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Limpar o evento ao desmontar o componente
+    };
+  }, []);
 
   const handleSelectedRegion = async (e) => {
     const region = e.target.value;
+    setRegionSelected(region);
+
     const res = await fetch(`https://restcountries.com/v3.1/region/${region}`);
     const data = await res.json();
 
@@ -55,22 +67,21 @@ const Home = () => {
     setCountries(sortedCountries);
   };
 
-  const search = (countrie) => {
-
-    if (!countrie) {
+  const search = (name) => {
+    if (!name) {
       setError(true);
     } else {
       setIsLoading(false)
-      navigate(`/${countrie}`);
+      navigate(`/${name}`);
     }
   };
 
-  const handleClick = (countrie) => {
-    if (!countrie) {
+  const handleClick = (name) => {
+    if (!name) {
       setError(true);
     } else {
       setIsLoading(false)
-      navigate(`/${countrie}`);
+      navigate(`/${name}`);
     }
   };
 
@@ -79,7 +90,7 @@ const Home = () => {
       <button
         id="backToTop"
         className="back-to-top"
-        onClick={() => scrollToTop()}
+        onClick={scrollToTop}
       >
         <img src="/images/seta.png" alt="seta" />
       </button>
@@ -89,17 +100,17 @@ const Home = () => {
         </div>
         <div className="select">
           <select
-            defaultValue={regionSelected}
-            onChange={(e) => handleSelectedRegion(e)}
+            value={regionSelected}
+            onChange={handleSelectedRegion}
           >
             <option value={""} disabled>
               Filter by Region
             </option>
-            <option value={region[0]}>{region[0]}</option>
-            <option value={region[1]}>{region[1]}</option>
-            <option value={region[2]}>{region[2]}</option>
-            <option value={region[3]}>{region[3]}</option>
-            <option value={region[4]}>{region[4]}</option>
+            {region.map((regionOption, index) => (
+              <option key={index} value={regionOption}>
+                {regionOption}
+              </option>
+            ))}
           </select>
         </div>
       </div>
