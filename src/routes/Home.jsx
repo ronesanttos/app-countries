@@ -64,6 +64,15 @@ const Home = () => {
     }
   };
 
+  const handleClick = (countrie) => {
+    if (!countrie) {
+      setError(true);
+    } else {
+      setIsLoading(false)
+      navigate(`/${countrie}`);
+    }
+  };
+
   return (
     <main>
       <button
@@ -97,7 +106,7 @@ const Home = () => {
       {countries && (
         <div className="countries">
           {countries.map((countrie, index) => (
-            <Cards key={index} {...countrie} />
+            <Cards key={index} {...countrie} handleClick={handleClick}/>
           ))}
         </div>
       )}
